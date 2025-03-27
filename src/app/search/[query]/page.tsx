@@ -29,7 +29,7 @@ const SearchResults = ({ params }: { params: Promise<{ query: string }> }) => {
         const searchQuery = decodeURIComponent(resolvedParams.query || "");
         setQuery(searchQuery);
 
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/search?name=${encodeURIComponent(searchQuery)}`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_LOCALHOST}/search?name=${encodeURIComponent(searchQuery)}`);
     
         if (!response.ok) {
           throw new Error(`HTTP Error! Status: ${response.status}`);
@@ -67,7 +67,7 @@ const SearchResults = ({ params }: { params: Promise<{ query: string }> }) => {
         console.error("Error fetching products:", error);
       }
     };
-    console.log("API URL:", process.env.NEXT_PUBLIC_API_URL);
+    console.log("API URL:", process.env.NEXT_PUBLIC_LOCALHOST);
 
     fetchProducts();
   }, [params]); // Fix dependency
@@ -77,7 +77,7 @@ const SearchResults = ({ params }: { params: Promise<{ query: string }> }) => {
       const queryParams = new URLSearchParams(filters);
       console.log("Sending Filter Request:", queryParams.toString()); // ✅ Log request before sending
   
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/filter?${queryParams.toString()}`);
+      const response = await fetch(`${process.env.NEXT_PUBLIC_LOCALHOST}/products/filter?${queryParams.toString()}`);
   
       if (!response.ok) {
         const errorText = await response.text();

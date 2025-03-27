@@ -32,7 +32,7 @@ const ProductDetail = ({ params }: { params: Promise<{ query: string; productId:
         const { query, productId } = resolvedParams;
         setQuery(query);
 
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/${productId}`);
+        const response = await fetch(`${process.env.NEXT_PUBLIC_LOCALHOST}/products/${productId}`);
         if (!response.ok) {
           throw new Error(`HTTP Error! Status: ${response.status}`);
         }
@@ -111,7 +111,7 @@ const ProductDetail = ({ params }: { params: Promise<{ query: string; productId:
 
           <div className="bg-[#333333] p-4 rounded-lg mt-4 flex justify-between items-start">
             <div className="flex flex-wrap gap-1.5 mt-[15px]">
-              {product.sizes.slice(0, 3).map((size, index) => (
+              {product?.sizes?.slice(0, 3).map((size, index) => (
                 <span
                   key={index}
                   className="border-1 border-[#919191] text-[#919191] px-3 py-1 rounded-xl"
@@ -134,11 +134,11 @@ const ProductDetail = ({ params }: { params: Promise<{ query: string; productId:
               <div className="flex gap-3 mt-2">
                 {product.first_price && (
                   <p className="text-[#919191] line-through text-[16px]">
-                    {product.first_price.toLocaleString()} ₸
+                    {product?.first_price?.toLocaleString()} ₸
                   </p>
                 )}
                 <p className="text-white text-[16px]">
-                  {product.sale_price.toLocaleString()} ₸
+                  {product?.sale_price?.toLocaleString()} ₸
                 </p>
               </div>
             </div>

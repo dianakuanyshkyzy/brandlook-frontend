@@ -24,7 +24,7 @@ const Navbar = () => {
       
       <div className="flex items-center text-2xl font-bold ml-[340px]">
         <Link href="/home" passHref>
-          <h1 className="text-[32px] font-poppins font-extrabold leading-[52px] tracking-tight">
+          <h1 className="text-[25px] font-poppins font-extrabold leading-[52px] tracking-tight">
             <span className="font-extrabold italic">brand</span>
             <span className="text-[#6F00FF] font-extrabold italic">list</span>{" "} 
           </h1>

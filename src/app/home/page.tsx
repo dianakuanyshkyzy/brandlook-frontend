@@ -4,14 +4,16 @@ import { useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import { useEffect } from "react";
 
+
 const SearchSection = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const router = useRouter();
-
+  const [icon, setIcon] = useState("/images/arrow.png");
   const handleSearch = () => {
     if (searchQuery.trim()) {
       router.push(`/search/${encodeURIComponent(searchQuery)}`);
     }
+    
   };
 
   const handleQueryClick = (query: string) => {
@@ -20,11 +22,11 @@ const SearchSection = () => {
 
   return (
     <div
-      className="absolute z-10 bg-darkgrayColor bg-opacity-95 text-white text-center rounded-[30px] w-[760px] h-[730px] mx-auto left-1/2 transform -translate-x-1/2 overflow-hidden"
+      className="absolute z-10 bg-darkgrayColor bg-opacity-95 text-white text-center rounded-[30px] w-[760px] h-[680px] mx-auto left-1/2 transform -translate-x-1/2 overflow-hidden"
       style={{ top: "20px" }} 
     >
-      <div className="p-12 mt-[140px]">
-        <h1 className="text-[40px] font-poppins font-normal leading-[52px] tracking-tight">
+      <div className="p-10 mt-[130px]">
+        <h1 className="text-[32px] font-poppins font-normal leading-[42px] tracking-tight">
           <span className="font-extrabold italic">brand</span>
           <span className="text-[#6F00FF] font-extrabold italic">list</span>{" "}
           <span className="font-inter">— это</span>{" "}
@@ -47,8 +49,10 @@ const SearchSection = () => {
           <button
             className="absolute right-4 w-[30px] h-[30px] bg-purple-600 text-white rounded-full flex items-center justify-center"
             onClick={handleSearch}
+            onMouseEnter={() => setIcon("/images/whitearrow.png")} 
+            onMouseLeave={() => setIcon("/images/arrow.png")} 
           >
-            <img src="/images/arrow.png" alt="Search" className="w-[15px] h-[15px]" />
+            <img src={icon} alt="Search" className="w-[15px] h-[15px]" />
           </button>
         </div>
 
